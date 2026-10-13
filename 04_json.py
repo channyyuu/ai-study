@@ -1,16 +1,22 @@
 from dotenv import load_dotenv
 from openai import OpenAI
-from pydantic import BaseModel
+
+# pydantic
+# 데이터 유효성 검사 및 설정 관리를 위한 라이브러리
+# FastAPI와 같은 웹 프레임워크와 함께 사용되며, 데이터를 구조화하고 검증하는 데 유용
+# BaseModel은 Pydantic의 핵심 클래스 중 하나로, 데이터 모델을 정의하는 데 사용
+from pydantic import BaseModel 
+
 # JSON 응답
 
 load_dotenv()
 client = OpenAI()
 
 class DefectReport(BaseModel):
-    part_name: str
-    defect_type: str
-    severity: int # 1~5
-    action: str
+    part_name: str # 부위명
+    defect_type: str # 결함명
+    severity: int # 심각성, 1~5
+    action: str # 방안
 
 response = client.responses.parse(
     model="gpt-6-luna",

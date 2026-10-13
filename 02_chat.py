@@ -14,9 +14,9 @@ while True:
         break
     history.append({"role": "user", "content": user})
 
-    response = client.responses.create(model="gpt-6-luna", input=history)
+    #input=history를 input=user로 변경 시 이번 질문 하나만 보는 상태가 되는 결정
+    response = client.responses.create(model="gpt-6-luna", input=history) 
     answer = response.output_text
     print("AI:", answer)
 
-    # 이 부분을 주석 처리 하여 기억 못 하는 것까지 확인 필요
     history.append({"role": "assistant", "content": answer})
