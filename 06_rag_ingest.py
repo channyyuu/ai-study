@@ -9,8 +9,10 @@ load_dotenv()
 client = OpenAI()
 
 PDF_PATH = "doc.pdf"
-CHUNK_SIZE = 500     # 한 조각 글자 수(500~1000 권장 / 1000이 국룩)
-OVERLAP = 100        # 조각끼리 겹치는 글자 수 (문장이 중간에 잘리는 것 보완, 100~200 권장 / 200이 국룰)
+# CHUNK_SIZE: 한 조각 글자 수(500~1000 권장 / 1000이 국룩)
+CHUNK_SIZE = 1000     
+# OVERLAP: 조각끼리 겹치는 글자 수 (문장이 중간에 잘리는 것 보완, 100~200 권장 / 200이 국룰)
+OVERLAP = 200         
 EMBED_MODEL = "text-embedding-3-small"  # 1536차원
 
 # 1. 파싱: PDF → 페이지별 텍스트
